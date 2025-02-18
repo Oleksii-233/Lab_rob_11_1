@@ -15,7 +15,7 @@ void inic(int* arr, int c);
 
 void show(const int* arr, int c);
 
-void clear(int* arr);
+void clear(int*& arr);
 
 int min(const int* arr, int c);
 
