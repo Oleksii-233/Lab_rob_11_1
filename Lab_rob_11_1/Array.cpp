@@ -1,11 +1,25 @@
 #include "Array.h"
 
-int* create(int c) {
+void IfNullPtr(const int* arr) {
+
+	if (!arr) {
+		cout << "Не правильно передано масив." << endl;
+		return;
+	}
+}
+
+int* create(int& c) {
+
+	cout << "Введiть розмiр масиву: "; Num(c);
+
 	return new int[c];
+
 }
 
 void inic(int* arr, int c) {
 	int ans;
+
+	IfNullPtr(arr);
 
 	cout << "Виберiть яким способом бажаєте заповнити масив (0 - вручну, iнше значення - rand): ";
 	
@@ -23,15 +37,25 @@ void inic(int* arr, int c) {
 }
 
 void show(const int* arr, int c) {
+
+	IfNullPtr(arr);
+
 	for (int i = 0; i < c; i++)
 		cout << arr[i] << " ";
 }
 
 void clear(int* arr) {
+
+	IfNullPtr(arr);
+
 	delete[] arr;
+
 }
 
 int min(const int* arr, int c) {
+
+	IfNullPtr(arr);
+
 	int min = *arr;
 
 	for (int i = 1; i < c; i++)
@@ -43,6 +67,9 @@ int min(const int* arr, int c) {
 }
 
 int max(const int* arr, int c) {
+	
+	IfNullPtr(arr);
+
 	int max = arr[0];
 
 	for (int i = 1; i < c; i++)
@@ -54,6 +81,9 @@ int max(const int* arr, int c) {
 }
 
 int* createNew(const int* arr, int c) {
+	
+	IfNullPtr(arr);
+
 	int k = 0;
 
 	for (int i = 0; i < c; i++)
@@ -77,6 +107,9 @@ int* createNew(const int* arr, int c) {
 }
 
 void showNull(const int* arr, int c) {
+	
+	IfNullPtr(arr);
+	
 	int k = 0;
 
 	for (int i = 0; i < c; i++)
@@ -99,6 +132,9 @@ void showNull(const int* arr, int c) {
 }
 
 double average(const int* arr, int c) {
+	
+	IfNullPtr(arr);
+	
 	int s = 0;
 
 	for (int i = 0; i < c; i++)
@@ -112,6 +148,9 @@ bool devide(int num) {
 }
 
 void sumCnt(const int* arr, int c) {
+
+	IfNullPtr(arr);
+
 	int k = 0, s = 0;
 
 	for(int i = 0; i < c; i++)
