@@ -9,7 +9,7 @@
 
 using namespace std;
 
-int* create(int c);
+int* create(int &c);
 
 void inic(int* arr, int c);
 
@@ -21,7 +21,7 @@ int min(const int* arr, int c);
 
 int max(const int* arr, int c);
 
-int* createNew(const int* arr, int c);
+int* createNew(const int* arr, int c, int& k);
 
 void showNull(const int* arr, int c);
 

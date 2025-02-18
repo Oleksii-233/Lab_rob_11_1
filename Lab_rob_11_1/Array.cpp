@@ -50,6 +50,8 @@ void clear(int* arr) {
 
 	delete[] arr;
 
+	arr = nullptr;
+
 }
 
 int min(const int* arr, int c) {
@@ -80,11 +82,11 @@ int max(const int* arr, int c) {
 
 }
 
-int* createNew(const int* arr, int c) {
+int* createNew(const int* arr, int c, int& k) {
 	
 	IfNullPtr(arr);
 
-	int k = 0;
+	k = 0;
 
 	for (int i = 0; i < c; i++)
 		if (*(arr + i) < 0)
@@ -159,7 +161,7 @@ void sumCnt(const int* arr, int c) {
 			s += *(arr + i);
 		}
 
-	cout << "Кiлькiсть елементiв кратних дев'яти: " << k << ", сума елементiв кратних дев'яти: " << endl;
+	cout << "Кiлькiсть елементiв кратних дев'яти: " << k << ", сума елементiв кратних дев'яти: " << s  << endl;
 
 }
 
