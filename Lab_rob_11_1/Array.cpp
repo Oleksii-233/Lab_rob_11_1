@@ -1,6 +1,6 @@
 #include "Array.h"
 
-bool IsNullPtr(const int* arr) {
+bool IsNullPtr(int* arr) {
 
 	if (!arr) {
 		cout << "Не правильно передано масив." << endl;
@@ -8,6 +8,16 @@ bool IsNullPtr(const int* arr) {
 	}
 	else
 		return false;
+
+}
+
+
+void Num(int& num) {
+	do {
+		cin >> num;
+		if (num <= 0)
+			cout << "Неправильни1 розмiр масиву." << endl;
+	} while (num <= 0);
 
 }
 
@@ -39,7 +49,7 @@ void inic(int* arr, int c) {
 	}
 }
 
-void show(const int* arr, int c) {
+void show(int* arr, int c) {
 
 	if(IsNullPtr(arr)) return;
 
@@ -60,7 +70,7 @@ void clear(int*& arr) {
 
 }
 
-int min(const int* arr, int c) {
+int min(int* arr, int c) {
 
 	if(IsNullPtr(arr)) return 0;
 
@@ -74,7 +84,7 @@ int min(const int* arr, int c) {
 	return min;
 }
 
-int max(const int* arr, int c) {
+int max(int* arr, int c) {
 	
 	if(IsNullPtr(arr)) return 0;
 
@@ -88,7 +98,7 @@ int max(const int* arr, int c) {
 
 }
 
-int* createNew(const int* arr, int c, int& k) {
+int* createNew(int* arr, int c, int& k) {
 	
 	if (IsNullPtr(arr)) return nullptr;
 
@@ -114,7 +124,7 @@ int* createNew(const int* arr, int c, int& k) {
 	
 }
 
-void showNull(const int* arr, int c) {
+void showNull(int* arr, int c) {
 	
 	if(IsNullPtr(arr)) return;
 	
@@ -139,7 +149,7 @@ void showNull(const int* arr, int c) {
 
 }
 
-double average(const int* arr, int c) {
+double average(int* arr, int c) {
 	
 	if(IsNullPtr(arr)) return 0;
 	
@@ -152,10 +162,10 @@ double average(const int* arr, int c) {
 }
 
 bool devide(int num) {
-	return num % 9 == 0;
+	return (num % 9 == 0 && num != 0);
 }
 
-void sumCnt(const int* arr, int c) {
+void sumCnt(int* arr, int c) {
 
 	if(IsNullPtr(arr)) return;
 
@@ -171,12 +181,13 @@ void sumCnt(const int* arr, int c) {
 
 }
 
-void Num(int& num) {
-	do {
-		cin >> num;
-
-		if (num <= 0)
-			cout << "Не правильний розмiр масиву." << endl;
-
-	} while (num <= 0);
+void clearAll(int* arr0, int* arr1) {
+	if (arr0) {
+		clear(arr0);
+		cout << "Звiльнено пам'ять iз користувацького масиву." << endl;
+	}
+	if (arr1) {
+		clear(arr1);
+		cout << "Звiльнено пам'ять iз масиву вiд'ємних елементiв." << endl;
+	}
 }

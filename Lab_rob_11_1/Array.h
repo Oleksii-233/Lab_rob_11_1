@@ -13,25 +13,26 @@ int* create(int &c);
 
 void inic(int* arr, int c);
 
-void show(const int* arr, int c);
+void show(int* arr, int c);
 
 void clear(int*& arr);
 
-int min(const int* arr, int c);
+int min(int* arr, int c);
 
-int max(const int* arr, int c);
+int max( int* arr, int c);
 
-int* createNew(const int* arr, int c, int& k);
+int* createNew(int* arr, int c, int& k);
 
-void showNull(const int* arr, int c);
+void showNull(int* arr, int c);
 
-double average(const int* arr, int c);
+double average(int* arr, int c);
 
 bool devide(int num);
 
-void sumCnt(const int* arr, int c);
+void sumCnt(int* arr, int c);
 
-void Num(int& num);
+void clearAll(int* arr0, int* arr1);
+
 
 #endif // !ARRAY_H
 
