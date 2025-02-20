@@ -11,7 +11,6 @@ bool IsNullPtr(int* arr) {
 
 }
 
-
 void Num(int& num) {
 	do {
 		cin >> num;
@@ -45,7 +44,7 @@ void inic(int* arr, int c) {
 		srand(time(nullptr));
 
 		for (int i = 0; i < c; i++)
-			*(arr + i) = rand() % 21 - 10;
+			*(arr + i) = rand() % 21 - 10;	
 	}
 }
 
@@ -70,7 +69,7 @@ void clear(int*& arr) {
 
 }
 
-int min(int* arr, int c) {
+int min(int* arr, int c)	 {
 
 	if(IsNullPtr(arr)) return 0;
 
@@ -168,7 +167,7 @@ bool devide(int num) {
 void sumCnt(int* arr, int c) {
 
 	if(IsNullPtr(arr)) return;
-
+		
 	int k = 0, s = 0;
 
 	for(int i = 0; i < c; i++)
