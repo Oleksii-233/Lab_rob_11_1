@@ -3,8 +3,8 @@
 bool IsNullPtr(int* arr) {
 
 	if (!arr) {
-		return true;
 		cout << "Не правильно передано масив." << endl;
+		return true;
 	}
 	else
 		return false;
@@ -15,7 +15,7 @@ void Num(int& num) {
 	do {
 		cin >> num;
 		if (num <= 0)
-			cout << "Неправильни1 розмiр масиву." << endl;
+			cout << "Неправильний розмiр масиву." << endl;
 	} while (num <= 0);
 
 }

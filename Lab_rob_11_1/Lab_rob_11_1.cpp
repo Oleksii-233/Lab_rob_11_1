@@ -9,7 +9,7 @@ int main() {
 	do {
 		cout << "Виберiть, що бажаєте зробити:\n";
 		cout << "0 - створення динамiчного масиву та його iнiцiалiзацiя,\n";
-		cout << "1 - виведення динамiчного масиву,\n";
+		cout << "1 - виведення динамiчного масиву чи масиву вiд'ємних елементiв\n";
 		cout << "2 - знаходження мiнiмального елементу,\n";
 		cout << "3 - знаходження максимального елементу,\n";
 		cout << "4 - знаходження середнього арифметичного значення елементiв,\n";
@@ -21,11 +21,13 @@ int main() {
 		cin >> ans;
 
 		switch (ans){
+
 		case 0: {
 			cout << "Введiть розмiр масиву: "; Num(c);
 			arr = create(c);
 			inic(arr, c);
 		}break;
+
 		case 1: {
 			cout << "Виберiть, який масив хочете вивести: 0 - корисувацький, iнше значення - масив вiд'ємних елементiв: " << endl;
 			cin >> ans;
@@ -36,29 +38,38 @@ int main() {
 				show(nArr, k_N);
 
 		}break;
+
 		case 2: {
 			cout << "Мiнiмальний елемент масиву: " << min(arr, c) << endl;
 		}break;
+
 		case 3: {
 			cout << "Максимальний елемент масиву: " << max(arr, c) << endl;
 		}break;
+
 		case 4: {
 			cout << setprecision(3) << "Середнє арифметичне елементiв масиву: " << average(arr, c) << endl;
 		}break;
+
 		case 5: {
 			nArr = createNew(arr, c, k_N);
+			if (!nArr)
+				cout << "Нульовi елементи вiдсутнi, масив нульових елементiв порожнiй." << endl;
 		}break;
+
 		case 6: {
 			int k = 0;
 			cout << "Сума елементiв кратних дев'яти: " << sumCnt(arr, c, k) << ", кiлькiсть: " << k << endl;
 		}break;
+
 		case 7: {
-			int* indArr, k;
+			int* indArr, k = 0;
 			indArr = nullArr(arr, c, k);
 			cout << "Кiлькiсть нульових елементiв: " << k << endl;
 			cout << "Порядковi номери: "; show(indArr, k);;
 			clear(indArr);
 		}break;
+
 		case 8: {
 			clearAll(arr, nArr);
 		}break;
