@@ -9,30 +9,41 @@
 
 using namespace std;
 
-int* create(int &c);
+bool IsNullPtr(int* arr); // Перевірка на порожній масив;
 
-void inic(int* arr, int c);
+void Num(int& num); // Гарантує правельне введення розміру масиву
 
-void show(int* arr, int c);
-
-void clear(int*& arr);
-
-int min(int* arr, int c);
-
-int max( int* arr, int c);
-
-int* createNew(int* arr, int c, int& k);
-
-void showNull(int* arr, int c);
-
-double average(int* arr, int c);
-
-bool devide(int num);
-
-void sumCnt(int* arr, int c);
-
-void clearAll(int* arr0, int* arr1);
+bool devide(int num, int d); // Перевірка на ділення на число d
 
 
-#endif // !ARRAY_H
+
+
+int* create(int c); // Створення динамічного одновимірного масиву
+
+void inic(int* arr, int c); // Використовується для заповнення динамічного масиву
+
+void show(int* arr, int c); // Використовується для масиву
+
+void clear(int*& arr); // Використовується для видалення одного масиву
+
+void clearAll(int* arr0, int* arr1); // Використовується для повного видалення всіх динамічних масивів.
+
+
+
+
+int min(int* arr, int c); // Використовується для знаходження мінімального значення масиву
+
+int max( int* arr, int c);  // Використовується для знахлдження максимального значення в масивові
+
+double average(int* arr, int c); // Використовується для визначення середнього арифметичного елменентів масиву
+
+
+
+int* createNew(int* arr, int c, int& k); // Використовується для створення масиву, що буде містити від'ємні елементи 
+
+int* nullArr(int* arr, int c, int& k); // Використовується для створенн створення новогу масиву, що буде містити порядкові номери від'ємних елементів елементи
+
+int sumCnt(int* arr, int c, int& k); // Використовується для визначення суми і кількості елементів, що діляться націло на 9
+
+#endif 
 

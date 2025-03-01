@@ -3,7 +3,6 @@
 bool IsNullPtr(int* arr) {
 
 	if (!arr) {
-		cout << "Не правильно передано масив." << endl;
 		return true;
 	}
 	else
@@ -20,12 +19,14 @@ void Num(int& num) {
 
 }
 
-int* create(int& c) {
+bool devide(int num, int d) {
+	return (num % d == 0 && num != 0);
+}
 
-	cout << "Введiть розмiр масиву: "; Num(c);
 
+
+int* create(int c) {
 	return new int[c];
-
 }
 
 void inic(int* arr, int c) {
@@ -40,12 +41,10 @@ void inic(int* arr, int c) {
 	if (!ans)
 		for (int i = 0; i < c; i++)
 			cin >> *(arr + i);
-	else {
-		srand(time(nullptr));
-
+	else 
 		for (int i = 0; i < c; i++)
 			*(arr + i) = rand() % 21 - 10;	
-	}
+	
 }
 
 void show(int* arr, int c) {
@@ -61,13 +60,24 @@ void show(int* arr, int c) {
 
 void clear(int*& arr) {
 
-	if(IsNullPtr(arr)) return;
-
 	delete[] arr;
 
 	arr = nullptr;
 
 }
+
+void clearAll(int* arr0, int* arr1) {
+	if (arr0) {
+		clear(arr0);
+		cout << "Звiльнено пам'ять iз користувацького масиву." << endl;
+	}
+	if (arr1) {
+		clear(arr1);
+		cout << "Звiльнено пам'ять iз масиву вiд'ємних елементiв." << endl;
+	}
+}
+
+
 
 int min(int* arr, int c)	 {
 
@@ -97,57 +107,6 @@ int max(int* arr, int c) {
 
 }
 
-int* createNew(int* arr, int c, int& k) {
-	
-	if (IsNullPtr(arr)) return nullptr;
-
-	k = 0;
-
-	for (int i = 0; i < c; i++)
-		if (*(arr + i) < 0)
-			k++;
-
-	if (!k) {
-		cout << "Вiд'ємних елементiв у масивi немає." << endl;
-		return nullptr;
-	}
-
-	int* arrNew = new int[k];
-	k = 0;
-
-	for (int i = 0; i < c; i++)
-		if (*(arr + i) < 0)
-			*(arrNew + k++) = *(arr + i);
-
-	return arrNew;
-	
-}
-
-void showNull(int* arr, int c) {
-	
-	if(IsNullPtr(arr)) return;
-	
-	int k = 0;
-
-	for (int i = 0; i < c; i++)
-		if (!arr[i])
-			k++;
-
-	if (!k) {
-		cout << "Нульовi елементи у масивi відсутнi." << endl;
-		return;
-	}
-
-	k = 0;
-	cout << "Iндекси нульових елементiв." << endl;
-	for(int i = 0; i < c; i++)
-		if (!arr[i]) {
-			k++;
-			cout << k << ". " << i << endl;
-		}
-
-}
-
 double average(int* arr, int c) {
 	
 	if(IsNullPtr(arr)) return 0;
@@ -160,33 +119,75 @@ double average(int* arr, int c) {
 	return double(s) / c;
 }
 
-bool devide(int num) {
-	return (num % 9 == 0 && num != 0);
+
+
+int* createNew(int* arr, int c, int& k) {
+
+	if (IsNullPtr(arr))
+		return nullptr;
+
+	k = 0;
+
+	for (int i = 0; i < c; i++)
+		if (*(arr + i) < 0)
+			k++;
+
+	if (!k)
+		return nullptr;
+
+	int* newArr = new int[k];
+	k = 0;
+
+	for (int i = 0; i < c; i++)
+		if (*(arr + i) < 0)
+			*(newArr + k++) = *(arr + i);
+
+	return newArr;
+
 }
 
-void sumCnt(int* arr, int c) {
+int* nullArr(int* arr, int c, int& k) {
+	if (IsNullPtr(arr)) return nullptr;
 
-	if(IsNullPtr(arr)) return;
-		
-	int k = 0, s = 0;
+	k = 0;
+
+	for (int i = 0; i < c; i++)
+		if (!*(arr + i))
+			k++;
+
+	if (!k)
+		return nullptr;
+
+	int* nullArr = new int[k];
+	k = 0;
+
+	for (int i = 0; i < c; i++)
+		if (!*(arr + i))
+			*(nullArr + k++) = i + 1;
+
+	return nullArr;
+}
+
+int sumCnt(int* arr, int c, int&k) {
+
+	k = 0;
+
+	if (IsNullPtr(arr)) return 0;
+
+	int s = 0;
 
 	for(int i = 0; i < c; i++)
-		if (devide(*(arr + i))) {
+		if (devide(arr[i], 9)) {
+			s += arr[i];
 			k++;
-			s += *(arr + i);
 		}
 
-	cout << "Кiлькiсть елементiв кратних дев'яти: " << k << ", сума елементiв кратних дев'яти: " << s  << endl;
-
+	return s;
 }
 
-void clearAll(int* arr0, int* arr1) {
-	if (arr0) {
-		clear(arr0);
-		cout << "Звiльнено пам'ять iз користувацького масиву." << endl;
-	}
-	if (arr1) {
-		clear(arr1);
-		cout << "Звiльнено пам'ять iз масиву вiд'ємних елементiв." << endl;
-	}
-}
+
+// Змінено створення масиву індексів нульових елементів
+// Сума та кількість
+// Головна програма
+// Створення масиву від'єних елементів
+

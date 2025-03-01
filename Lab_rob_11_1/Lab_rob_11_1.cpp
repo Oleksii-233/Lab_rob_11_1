@@ -2,21 +2,39 @@
 
 int main() {
 	setlocale(0, "UKR");
-	int* arr = nullptr, * arrN = nullptr, c = 0, k = 0, ans;
+	int* arr = nullptr, c,* nArr = nullptr, k_N, ans;
+
+	srand(time(nullptr));
 
 	do {
-		cout << "Виберiть, що бажаєте зробити:\n0 - створення динамiчного масиву та його iнiцiалiзацiя,\n1 - виведення динамiчного масиву,\n2 - знаходження мiнiмального елементу,\n3 - знаходження максимального елементу,\n4 - знаходження середнього арифметичного значення елементiв,\n5 - створення та виведення нового масиву, який буде мiстити всi вiд'ємнi елементи ранiше створеного,\n6 - сума та кiлькiсть елементiв кратних дев`яти,\n7 - Виведення iндексiв нульових елементiв\n8 - видалення динамiчних маисвiв,\nБудь - яке iнше значення для виходу" << endl;
+		cout << "Виберiть, що бажаєте зробити:\n";
+		cout << "0 - створення динамiчного масиву та його iнiцiалiзацiя,\n";
+		cout << "1 - виведення динамiчного масиву,\n";
+		cout << "2 - знаходження мiнiмального елементу,\n";
+		cout << "3 - знаходження максимального елементу,\n";
+		cout << "4 - знаходження середнього арифметичного значення елементiв,\n";
+		cout << "5 - створення нового динамiчного масиву який буде мiстити всi вiд'ємнi елементи ранiше створеного,\n";
+		cout << "6 - сума та кiлькiсть елементiв кратних дев`яти,\n";
+		cout << "7 - виведення кiлькості нульових елементiв та їх порядкових номерiв у користувацькому масивовi\n";
+		cout << "8 - видалення динамiчних маисвiв,\n";
+		cout << "Будь - яке iнше значення для виходу\n";
 		cin >> ans;
 
-		switch (ans) {
-
+		switch (ans){
 		case 0: {
+			cout << "Введiть розмiр масиву: "; Num(c);
 			arr = create(c);
-			inic(arr, c);
 		}break;
 		case 1: {
-			show(arr, c);
-		}break;
+			cout << "Виберiть, який масив хочете вивести: 0 - корисувацький, iнше значення - масив вiд'ємних елементiв: " << endl;
+			cin >> ans;
+
+			if (!ans)
+				show(arr, c);
+			else
+				show(nArr, k_N);
+
+		}
 		case 2: {
 			cout << "Мiнiмальний елемент масиву: " << min(arr, c) << endl;
 		}break;
@@ -24,26 +42,30 @@ int main() {
 			cout << "Максимальний елемент масиву: " << max(arr, c) << endl;
 		}break;
 		case 4: {
-			cout <<setprecision(3) << "Середнє арифметичне елементiв масиву: " << average(arr, c) << endl;
+			cout << setprecision(3) << "Середнє арифметичне елементiв масиву: " << average(arr, c) << endl;
 		}break;
 		case 5: {
-			arrN = createNew(arr, c, k);
-			if (k != 0)
-				show(arrN, k);
+			nArr = createNew(arr, c, k_N);
 		}break;
 		case 6: {
-			sumCnt(arr, c);
+			int k;
+			cout << "Сума елементiв кратних дев'яти: " << sumCnt(arr, c, k) << ", кiлькiсть: " << k << endl;
 		}break;
 		case 7: {
-			showNull(arr, c);
-
+			int* indArr, k;
+			indArr = nullArr(arr, c, k);
+			cout << "Кiлькiсть нульових елементiв: " << k << endl;
+			cout << "Порядковi номери: "; show(indArr, k);;
+			clear(indArr);
 		}break;
 		case 8: {
-			clearAll(arr, arrN);
+			clearAll(arr, nArr);
 		}break;
+		
 		default: return 0;
-		}
 
+		}
+		
 		system("pause");
 
 	} while (true);
