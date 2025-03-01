@@ -4,6 +4,7 @@ bool IsNullPtr(int* arr) {
 
 	if (!arr) {
 		return true;
+		cout << "Не правильно передано масив." << endl;
 	}
 	else
 		return false;

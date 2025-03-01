@@ -2,7 +2,7 @@
 
 int main() {
 	setlocale(0, "UKR");
-	int* arr = nullptr, c,* nArr = nullptr, k_N, ans;
+	int* arr = nullptr, c = 0,* nArr = nullptr, k_N = 0, ans;
 
 	srand(time(nullptr));
 
@@ -15,7 +15,7 @@ int main() {
 		cout << "4 - знаходження середнього арифметичного значення елементiв,\n";
 		cout << "5 - створення нового динамiчного масиву який буде мiстити всi вiд'ємнi елементи ранiше створеного,\n";
 		cout << "6 - сума та кiлькiсть елементiв кратних дев`яти,\n";
-		cout << "7 - виведення кiлькості нульових елементiв та їх порядкових номерiв у користувацькому масивовi\n";
+		cout << "7 - виведення кiлькостi нульових елементiв та їх порядкових номерiв у користувацькому масивовi\n";
 		cout << "8 - видалення динамiчних маисвiв,\n";
 		cout << "Будь - яке iнше значення для виходу\n";
 		cin >> ans;
@@ -24,6 +24,7 @@ int main() {
 		case 0: {
 			cout << "Введiть розмiр масиву: "; Num(c);
 			arr = create(c);
+			inic(arr, c);
 		}break;
 		case 1: {
 			cout << "Виберiть, який масив хочете вивести: 0 - корисувацький, iнше значення - масив вiд'ємних елементiв: " << endl;
@@ -34,7 +35,7 @@ int main() {
 			else
 				show(nArr, k_N);
 
-		}
+		}break;
 		case 2: {
 			cout << "Мiнiмальний елемент масиву: " << min(arr, c) << endl;
 		}break;
@@ -48,7 +49,7 @@ int main() {
 			nArr = createNew(arr, c, k_N);
 		}break;
 		case 6: {
-			int k;
+			int k = 0;
 			cout << "Сума елементiв кратних дев'яти: " << sumCnt(arr, c, k) << ", кiлькiсть: " << k << endl;
 		}break;
 		case 7: {
